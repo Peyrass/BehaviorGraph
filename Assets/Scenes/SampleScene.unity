@@ -194,7 +194,6 @@ GameObject:
   - component: {fileID: 92157819}
   - component: {fileID: 92157818}
   - component: {fileID: 92157817}
-  - component: {fileID: 92157816}
   m_Layer: 3
   m_Name: PlayerMesh
   m_TagString: Untagged
@@ -202,29 +201,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!136 &92157816
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92157815}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &92157817
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -651,6 +627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 341971113}
+  - component: {fileID: 341971114}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -674,6 +651,29 @@ Transform:
   - {fileID: 92157819}
   m_Father: {fileID: 147041448}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &341971114
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341971112}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &408117500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1514,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 607186976727892722
   - rid: 607186976727892723
+  - rid: 607186986772202195
   m_OriginalGraph: {fileID: -3333851442832084684, guid: 51014998a0113184fb9465daa62ceee3, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -1541,6 +1542,14 @@ MonoBehaviour:
         - {fileID: 799895663}
         - {fileID: 1619038781}
         - {fileID: 1119784273}
+    - rid: 607186986772202195
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3686903498471669535
+          m_Value1: 973801153396684322
+        Name: Target
+        m_Value: {fileID: 341971112}
 --- !u!1 &1333178780
 GameObject:
   m_ObjectHideFlags: 0

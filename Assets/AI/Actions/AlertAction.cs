@@ -16,15 +16,22 @@ public partial class AlertAction : Action
     [FormerlySerializedAs("CompanionActivate")]
     [SerializeReference] public BlackboardVariable<bool> companionActivate;
 
+    private bool hasAlerted = false;
+    
     protected override Status OnStart()
     {
-        Debug.Log($"{Self.Value.name} está gritando para alertar al compañero!");
-        
-        if (companionActivate != null)
+        if (!hasAlerted)
         {
-            companionActivate.Value = true; // Aquí sedespierta al Shooter
+            Debug.Log($"{Self.Value.name} alerta al compañero!");
+            companionActivate.Value = true;
+            hasAlerted = true;
         }
-        
+
         return Status.Success;
+    }
+
+    protected override void OnEnd()
+    {
+        hasAlerted = false;
     }
 }
