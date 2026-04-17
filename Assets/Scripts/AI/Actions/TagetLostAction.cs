@@ -3,6 +3,7 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
+using UnityEngine.Serialization;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "TagetLostAction", story: "Check if [target] is lost by [self]", category: "MyActions", id: "a735ba0fbf8baee25651e6c28b3f3493")]
@@ -10,8 +11,8 @@ public partial class TargetLostAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Self;
     [SerializeReference] public BlackboardVariable<GameObject> Target;
-    [SerializeReference] public BlackboardVariable<float> DetectionRadius;
-    [SerializeReference] public BlackboardVariable<float> DetectionAngle;
+    [FormerlySerializedAs("DetectionRadius")] [SerializeReference] public BlackboardVariable<float> exitDetectionRadius;
+    [FormerlySerializedAs("DetectionAngle")] [SerializeReference] public BlackboardVariable<float> exitDetectionAngle;
     [SerializeReference] public BlackboardVariable<string> TargetLayerName;
     [SerializeReference] public BlackboardVariable<string> EnemyLayerName;
 
@@ -19,10 +20,10 @@ public partial class TargetLostAction : Action
 
     protected override Status OnStart()
     {
-        // Solo necesitamos saber qué bloquea la vista
+        // Cualquier objeto que no tenga layer Player o Enemy bloqueará la visión
         obstacleLayerMask = ~LayerMask.GetMask(TargetLayerName, EnemyLayerName);
         
-        // Si no hay un objetivo asignado al empezar, la pérdida es inmediata
+        // Early return que evita errores en caso de que no haya un objetivo definido
         if (Target.Value == null) return Status.Success;
         
         return Status.Running;
@@ -33,17 +34,17 @@ public partial class TargetLostAction : Action
         if (Target.Value == null) return Status.Success;
 
         Vector3 directionToTarget = Target.Value.transform.position - Self.Value.transform.position;
-        float distance = directionToTarget.magnitude;
+        float distanceBetween = directionToTarget.magnitude;
 
-        // 1. ¿Se salió del radio?
-        if (distance > DetectionRadius.Value) return Status.Success;
+        // 1. ¿Target salió del radio?
+        if (distanceBetween > exitDetectionRadius.Value) return Status.Success; //éxito -> empieza a investigar
 
         // 2. ¿Se salió del ángulo de visión?
-        if (Vector3.Angle(directionToTarget, Self.Value.transform.forward) > DetectionAngle.Value / 2f)
+        if (Vector3.Angle(directionToTarget, Self.Value.transform.forward) > exitDetectionAngle.Value / 2f)
             return Status.Success;
 
         // 3. ¿Hay un obstáculo en medio? (Raycast)
-        if (Physics.Raycast(Self.Value.transform.position, directionToTarget, distance, obstacleLayerMask))
+        if (Physics.Raycast(Self.Value.transform.position, directionToTarget, distanceBetween, obstacleLayerMask))
             return Status.Success;
 
         // Si ninguna de las anteriores se cumple, el objetivo SIGUE a la vista
