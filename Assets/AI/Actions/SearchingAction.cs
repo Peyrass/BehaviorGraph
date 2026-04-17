@@ -25,7 +25,7 @@ public partial class SearchingAction : Action
             obstacleLayerMask = ~LayerMask.GetMask(TargetLayerName, EnemyLayerName); //Cualquier capa que no sea la objetivo o la enemigo
             return Status.Running; //La tarea continua
         }
-    
+        
         protected override Status OnUpdate()
         {
             if (Physics.OverlapSphereNonAlloc(Self.Value.transform.position, DetectionRadius.Value, results,
@@ -34,14 +34,14 @@ public partial class SearchingAction : Action
             //Se extrae la dirección del objetivo
         
         
-            Vector3 directionToTarget = results[0].transform.position - Self.Value.transform.position;
+            Vector3 distanceToTarget = results[0].transform.position - Self.Value.transform.position;
         
             //se comprueba que el Target está en el rango de detección
-            if (!(Vector3.Angle(directionToTarget, Self.Value.transform.forward) < DetectionAngle.Value / 2))  
+            if (!(Vector3.Angle(distanceToTarget, Self.Value.transform.forward) < DetectionAngle.Value / 2))  
                 return Status.Running; //early return.
         
         
-            if (Physics.Raycast(Self.Value.transform.position, directionToTarget, directionToTarget.magnitude,
+            if (Physics.Raycast(Self.Value.transform.position, distanceToTarget, distanceToTarget.magnitude,
                     obstacleLayerMask)) return Status.Running;
         
             Target.Value = results[0].gameObject; //Objetivo setteado
