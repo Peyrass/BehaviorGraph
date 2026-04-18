@@ -31,7 +31,7 @@ public partial class TargetLostAction : Action
 
     protected override Status OnUpdate()
     {
-        if (Target.Value == null) return Status.Success;
+        if (Target.Value == null){ Debug.Log("Objetivo no asignado para" + Self.Name); return Status.Success;}
 
         Vector3 directionToTarget = Target.Value.transform.position - Self.Value.transform.position;
         float distanceBetween = directionToTarget.magnitude;

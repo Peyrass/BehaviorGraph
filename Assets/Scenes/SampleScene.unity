@@ -1148,6 +1148,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427929971}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &507503728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 507503729}
+  m_Layer: 0
+  m_Name: SorcererHome
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &507503729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507503728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.88, y: 0.70865, z: 2.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &510210395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,6 +1662,7 @@ MonoBehaviour:
   - rid: 607186976727892723
   - rid: 607186986772202195
   - rid: 607187003444822504
+  - rid: 607187027879527303
   m_OriginalGraph: {fileID: -3333851442832084684, guid: 51014998a0113184fb9465daa62ceee3, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -1674,6 +1706,14 @@ MonoBehaviour:
           m_Value1: 3980679809973739393
         Name: ChaserAnimator
         m_Value: {fileID: 7776825126082909384}
+    - rid: 607187027879527303
+      type: {class: 'BlackboardVariable`1[[AlertEvent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4752107102718340725
+          m_Value1: 11740327745238732520
+        Name: AlertEvent
+        m_Value: {fileID: 11400000, guid: 8600a83cdaf324344ab652a08f299d5f, type: 2}
 --- !u!1 &1333178780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1867,9 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 607187024267968723
   - rid: 607187027109347407
+  - rid: 607187027879527304
+  - rid: 607187028675658044
+  - rid: 607187029121827499
   m_OriginalGraph: {fileID: -9016760415125084879, guid: 2e969384bd7193948b02f2c68c0c6927, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -1849,6 +1892,30 @@ MonoBehaviour:
           m_Value1: 16932045213876576867
         Name: SorcererAnimator
         m_Value: {fileID: 919132147957829218}
+    - rid: 607187027879527304
+      type: {class: 'BlackboardVariable`1[[AlertEvent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11240693139605730039
+          m_Value1: 5780913590489935382
+        Name: AlertEvent
+        m_Value: {fileID: 11400000, guid: 8600a83cdaf324344ab652a08f299d5f, type: 2}
+    - rid: 607187028675658044
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10396901769762919298
+          m_Value1: 6869481296055674259
+        Name: Target
+        m_Value: {fileID: 341971112}
+    - rid: 607187029121827499
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4035438319920250222
+          m_Value1: 1432883120714800644
+        Name: Home
+        m_Value: {fileID: 507503729}
 --- !u!195 &1788024170
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5919,3 +5986,4 @@ SceneRoots:
   - {fileID: 37113069}
   - {fileID: 1955768678}
   - {fileID: 147041448}
+  - {fileID: 507503729}
