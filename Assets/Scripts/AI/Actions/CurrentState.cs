@@ -6,6 +6,5 @@ public enum CurrentState
 {
 	Patrol,
 	Chase,
-	Attack,
 	Investigate
 }
