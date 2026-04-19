@@ -102,6 +102,17 @@
                     "action": "jumpInput",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a716e81f-ba81-4070-9fb4-0502520554e0",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "jumpInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -34,7 +34,7 @@ public partial class ElPrimoEnemySearchAction : Action
                 DetectionRadius.Value,
                 results,
                 enemyLayerMask) <= 0)
-            return Status.Running;
+            return Status.Failure;
         
         var origin = Self.Value.transform.position;
         var targetPos = results[0].transform.position;
@@ -45,7 +45,7 @@ public partial class ElPrimoEnemySearchAction : Action
                 distanceToTarget.normalized,
                 distanceToTarget.magnitude,
                 obstacleLayerMask)) 
-            return Status.Running;
+            return Status.Failure;
 
         Enemy.Value = results[0].gameObject; //Objetivo escogido
         return Status.Success;
