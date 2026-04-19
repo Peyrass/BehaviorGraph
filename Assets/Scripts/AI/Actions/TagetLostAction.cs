@@ -21,7 +21,7 @@ public partial class TargetLostAction : Action
     protected override Status OnStart()
     {
         // Cualquier objeto que no tenga layer Player o Enemy bloqueará la visión
-        obstacleLayerMask = ~LayerMask.GetMask(TargetLayerName, EnemyLayerName);
+        obstacleLayerMask = ~LayerMask.GetMask(TargetLayerName.Value, EnemyLayerName.Value);
         
         // Early return que evita errores en caso de que no haya un objetivo definido
         if (Target.Value == null) return Status.Success;

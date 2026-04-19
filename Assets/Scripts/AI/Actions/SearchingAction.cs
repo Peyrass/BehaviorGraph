@@ -21,8 +21,8 @@ public partial class SearchingAction : Action
         private Collider[] results = new Collider[1];
         protected override Status OnStart()
         {
-            targetLayerMask = LayerMask.GetMask(TargetLayerName); //Capa objetivo.
-            obstacleLayerMask = ~LayerMask.GetMask(TargetLayerName, EnemyLayerName); //Cualquier capa que no sea la objetivo o la enemigo
+            targetLayerMask = LayerMask.GetMask(TargetLayerName.Value); //Capa objetivo.
+            obstacleLayerMask = ~LayerMask.GetMask(TargetLayerName, EnemyLayerName.Value); //Cualquier capa que no sea la objetivo o la enemigo
             return Status.Running; //La tarea continua
         }
         
